@@ -207,7 +207,7 @@ app.put('/update-memorial/:id', async (req, res) => {
   }
 
   try {
-    const qrCodeURL = `https://memorializeai-backend.onrender.com//memorial/@${id}`;
+    const qrCodeURL = `https://memorializeai-backend.onrender.com/memorial/@${id}`;
 
     // ✅ Fix: Change `dob` to `birth_date`
     const result = await pool.query(
@@ -311,9 +311,9 @@ app.delete('/delete-memorial/:id', async (req, res) => {
 });
 
 // ✅ Add this at the bottom before `app.listen()`
-// app.get("/", (req, res) => {
-//   res.send("Welcome to the MemorializeAI Backend API! 🎉 Visit /memorials to get all profiles.");
-// });
+app.get("/", (req, res) => {
+  res.send("Welcome to the MemorializeAI Backend API! 🎉 Visit /memorials to get all profiles.");
+});
 app.get("/get-openai-key", (req, res) => {
   const apiKey = process.env.OPENAI_API_KEY;
   
